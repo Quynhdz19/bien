@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đoàn Thanh Biển - Content Marketing Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6C63FF;
+            --primary-dark: #5A52D5;
+            --primary-light: #5549e0;
+            --secondary: #e8456a;
+            --accent: #00b894;
+            --bg-dark: #f5f7fb;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f0f2f8;
+            --text-primary: #1a1a2e;
+            --text-secondary: #555770;
+            --text-muted: #8889a0;
+            --border: #e0e2ee;
+            --gradient-1: linear-gradient(135deg, #6C63FF, #FF6584);
+            --gradient-2: linear-gradient(135deg, #00b894, #6C63FF);
+            --gradient-3: linear-gradient(135deg, #FF6584, #FFB347);
+            --shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+            --shadow-glow: 0 8px 30px rgba(108, 99, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #eef0f5; }
+        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 0.6rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 0;
+            width: 0; height: 2px;
+            background: var(--gradient-1);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--text-primary); }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* Language Toggle */
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: 3px;
+            cursor: pointer;
+            gap: 0;
+        }
+
+        .lang-btn {
+            padding: 0.3rem 0.7rem;
+            border-radius: 50px;
+            border: none;
+            background: transparent;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .lang-btn.active {
+            background: var(--gradient-1);
+            color: #fff;
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+
+        .nav-toggle span {
+            width: 24px; height: 2px;
+            background: #333;
+            transition: all 0.3s;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%; right: -30%;
+            width: 800px; height: 800px;
+            background: radial-gradient(circle, rgba(108, 99, 255, 0.1) 0%, transparent 70%);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%; left: -20%;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(255, 101, 132, 0.08) 0%, transparent 70%);
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -30px); }
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-content h1 span {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--primary-light);
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero-description {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 520px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn-primary {
+            padding: 0.85rem 2rem;
+            background: var(--gradient-1);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(108, 99, 255, 0.4);
+        }
+
+        .btn-outline {
+            padding: 0.85rem 2rem;
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--border);
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-avatar {
+            width: 380px; height: 380px;
+            border-radius: 30px;
+            background: var(--gradient-1);
+            padding: 4px;
+            position: relative;
+            animation: morph 8s ease-in-out infinite;
+        }
+
+        .hero-avatar-inner {
+            width: 100%; height: 100%;
+            border-radius: 28px;
+            background: #ffffff;
+            overflow: hidden;
+        }
+
+        .hero-avatar-inner img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        @keyframes morph {
+            0%, 100% { border-radius: 30px; }
+            25% { border-radius: 50px 30px 60px 30px; }
+            50% { border-radius: 30px 60px 30px 50px; }
+            75% { border-radius: 60px 30px 50px 30px; }
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: -3rem auto 0;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+        }
+
+        /* Section */
+        section { padding: 6rem 0; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            background: rgba(108, 99, 255, 0.1);
+            border: 1px solid rgba(108, 99, 255, 0.2);
+            border-radius: 50px;
+            color: var(--primary-light);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .section-title span {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-desc {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .about-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .info-item {
+            padding: 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        .info-item .label {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+        }
+
+        .info-item .value {
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* Experience */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary), var(--accent));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            transition: all 0.3s;
+        }
+
+        .timeline-item:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-glow);
+            transform: translateX(5px);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3rem; top: 2rem;
+            width: 14px; height: 14px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 3px solid #ffffff;
+            transform: translateX(-6px);
+        }
+
+        .timeline-date {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: rgba(108, 99, 255, 0.1);
+            border-radius: 50px;
+            color: var(--primary-light);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .timeline-company {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            color: var(--text-primary);
+        }
+
+        .timeline-role {
+            font-size: 0.95rem;
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-details { list-style: none; }
+
+        .timeline-details li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.6rem;
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+        }
+
+        .timeline-details li::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 10px;
+            width: 6px; height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        /* Education */
+        .edu-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .edu-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .edu-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: var(--gradient-1);
+        }
+
+        .edu-icon {
+            width: 60px; height: 60px;
+            background: rgba(108, 99, 255, 0.1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .edu-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .edu-major {
+            color: var(--primary-light);
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .edu-gpa {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            background: rgba(0, 212, 170, 0.1);
+            border: 1px solid rgba(0, 212, 170, 0.2);
+            border-radius: 50px;
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        /* Certificates */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .cert-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .cert-icon {
+            width: 50px; height: 50px;
+            margin: 0 auto 1.2rem;
+            background: rgba(108, 99, 255, 0.1);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .cert-card:nth-child(1) .cert-icon { color: #e05555; background: rgba(255, 107, 107, 0.1); }
+        .cert-card:nth-child(2) .cert-icon { color: #2db5a5; background: rgba(78, 205, 196, 0.12); }
+        .cert-card:nth-child(3) .cert-icon { color: #d4a017; background: rgba(255, 217, 61, 0.12); }
+
+        .cert-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .cert-detail { color: var(--text-secondary); font-size: 0.9rem; }
+
+        .cert-badge {
+            display: inline-block;
+            margin-top: 0.8rem;
+            padding: 0.3rem 0.8rem;
+            background: rgba(108, 99, 255, 0.1);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--primary-light);
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .project-video {
+            position: relative;
+            width: 100%;
+            padding-top: 177%;
+            background: #000;
+        }
+
+        .project-video iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+        }
+
+        .project-info {
+            padding: 1.2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-company {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.3rem 0.8rem;
+            background: rgba(108, 99, 255, 0.08);
+            border-radius: 50px;
+            color: var(--primary);
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            width: fit-content;
+        }
+
+        .project-title {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: gap 0.3s;
+        }
+
+        .project-link:hover { gap: 0.7rem; }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            padding: 1.2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            border-color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .contact-icon {
+            width: 48px; height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item:nth-child(1) .contact-icon { background: rgba(108, 99, 255, 0.08); color: var(--primary); }
+        .contact-item:nth-child(2) .contact-icon { background: rgba(0, 184, 148, 0.08); color: var(--accent); }
+        .contact-item:nth-child(3) .contact-icon { background: rgba(232, 69, 106, 0.08); color: var(--secondary); }
+
+        .contact-label {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-value {
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .contact-value a { color: inherit; text-decoration: none; }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.3s;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus { border-color: var(--primary); }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder { color: var(--text-muted); }
+
+        .form-group textarea { resize: vertical; min-height: 130px; }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2.5rem 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-copy { color: var(--text-muted); font-size: 0.85rem; }
+
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .footer-socials a {
+            width: 40px; height: 40px;
+            border-radius: 10px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-socials a:hover {
+            border-color: var(--primary);
+            color: var(--primary-light);
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-container { grid-template-columns: 1fr; text-align: center; }
+            .hero-content h1 { font-size: 2.8rem; }
+            .hero-description { margin: 0 auto 2rem; }
+            .hero-buttons { justify-content: center; }
+            .hero-visual { order: -1; }
+            .hero-avatar { width: 280px; height: 280px; }
+            .stats { grid-template-columns: repeat(2, 1fr); margin-top: 2rem; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .cert-grid { grid-template-columns: 1fr; }
+            .projects-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 640px) {
+            .hero-content h1 { font-size: 2.2rem; }
+            .hero-subtitle { font-size: 1.1rem; }
+            .stats { grid-template-columns: 1fr 1fr; gap: 1rem; }
+            .stat-card { padding: 1.2rem; }
+            .stat-number { font-size: 2rem; }
+            .section-title { font-size: 2rem; }
+            .nav-links { display: none; }
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%; left: 0; right: 0;
+                background: rgba(255, 255, 255, 0.98);
+                padding: 1.5rem 2rem;
+                gap: 1rem;
+                border-bottom: 1px solid var(--border);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            }
+            .nav-toggle { display: flex; }
+            .form-row { grid-template-columns: 1fr; }
+            .about-info { grid-template-columns: 1fr; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .projects-grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav id="navbar">
+    <div class="nav-container">
+        <a href="#" class="nav-logo">DTB.</a>
+        <div class="nav-right">
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" data-vi="Trang chủ" data-en="Home">Trang chủ</a></li>
+                <li><a href="#about" data-vi="Giới thiệu" data-en="About">Giới thiệu</a></li>
+                <li><a href="#experience" data-vi="Kinh nghiệm" data-en="Experience">Kinh nghiệm</a></li>
+                <li><a href="#education" data-vi="Học vấn" data-en="Education">Học vấn</a></li>
+                <li><a href="#certificates" data-vi="Chứng chỉ" data-en="Certificates">Chứng chỉ</a></li>
+                <li><a href="#projects" data-vi="Dự án" data-en="Projects">Dự án</a></li>
+                <li><a href="#contact" data-vi="Liên hệ" data-en="Contact">Liên hệ</a></li>
+            </ul>
+            <div class="lang-toggle">
+                <button class="lang-btn" id="btnVI" onclick="switchLang('vi')">VI</button>
+                <button class="lang-btn active" id="btnEN" onclick="switchLang('en')">EN</button>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="hero-container">
+        <div class="hero-content">
+            <h1 data-vi="Xin chào, tôi là<br><span>Đoàn Thanh Biển</span>" data-en="Hello, I'm<br><span>Doan Thanh Bien</span>">Xin chào, tôi là<br><span>Đoàn Thanh Biển</span></h1>
+            <p class="hero-subtitle">Content Marketing Specialist</p>
+            <p class="hero-description" data-vi="Chuyên viên Content Marketing với kinh nghiệm sáng tạo nội dung đa nền tảng, quản lý truyền thông số và phát triển chiến lược nội dung cho doanh nghiệp." data-en="Content Marketing Specialist with experience in multi-platform content creation, digital media management, and developing content strategies for businesses.">
+                Chuyên viên Content Marketing với kinh nghiệm sáng tạo nội dung đa nền tảng, quản lý truyền thông số và phát triển chiến lược nội dung cho doanh nghiệp.
+            </p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn-primary">
+                    <i class="fas fa-paper-plane"></i> <span data-vi="Liên hệ ngay" data-en="Contact Me">Liên hệ ngay</span>
+                </a>
+                <a href="#experience" class="btn-outline">
+                    <i class="fas fa-briefcase"></i> <span data-vi="Xem kinh nghiệm" data-en="View Experience">Xem kinh nghiệm</span>
+                </a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-avatar">
+                <div class="hero-avatar-inner">
+                    <img src="assets/avatar.png" alt="Đoàn Thanh Biển">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats -->
+<div class="stats fade-in">
+    <div class="stat-card">
+        <div class="stat-number" data-target="3">0</div>
+        <div class="stat-label" data-vi="Công ty hợp tác" data-en="Companies">Công ty hợp tác</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number" data-target="2">0</div>
+        <div class="stat-label" data-vi="Năm kinh nghiệm" data-en="Years of Experience">Năm kinh nghiệm</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number" data-target="5">0</div>
+        <div class="stat-label" data-vi="Nền tảng MXH" data-en="Social Platforms">Nền tảng MXH</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number">3.16</div>
+        <div class="stat-label">GPA / 4.0</div>
+    </div>
+</div>
+
+<!-- About -->
+<section id="about">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="section-tag" data-vi="Giới thiệu" data-en="About">Giới thiệu</span>
+            <h2 class="section-title" data-vi="Về <span>tôi</span>" data-en="About <span>Me</span>">Về <span>tôi</span></h2>
+            <p class="section-desc" data-vi="Đam mê sáng tạo nội dung và truyền thông kỹ thuật số" data-en="Passionate about content creation and digital communications">Đam mê sáng tạo nội dung và truyền thông kỹ thuật số</p>
+        </div>
+        <div class="about-content fade-in">
+            <div class="about-text">
+                <p data-vi="Tôi là Đoàn Thanh Biển, sinh viên ngành Marketing tại Đại học Kinh Tế Quốc Dân. Với niềm đam mê sáng tạo nội dung và truyền thông số, tôi đã tích lũy kinh nghiệm thực tế qua nhiều vị trí Content Marketing tại các doanh nghiệp." data-en="I'm Doan Thanh Bien, a Marketing student at the National Economics University. With a passion for content creation and digital media, I have gained practical experience through various Content Marketing positions at different companies.">
+                    Tôi là Đoàn Thanh Biển, sinh viên ngành Marketing tại Đại học Kinh Tế Quốc Dân. Với niềm đam mê sáng tạo nội dung và truyền thông số, tôi đã tích lũy kinh nghiệm thực tế qua nhiều vị trí Content Marketing tại các doanh nghiệp.
+                </p>
+                <p data-vi="Trong quá trình làm việc, tôi đã phát triển kỹ năng toàn diện từ việc lên ý tưởng nội dung, sản xuất video, thiết kế hình ảnh đến quản lý fanpage và triển khai chiến lược truyền thông đa kênh. Tôi luôn nỗ lực tạo ra những nội dung chất lượng, sáng tạo và phù hợp với chiến lược thương hiệu." data-en="Throughout my career, I have developed comprehensive skills ranging from content ideation, video production, graphic design to fanpage management and multi-channel communication strategy implementation. I always strive to create high-quality, creative content aligned with brand strategy.">
+                    Trong quá trình làm việc, tôi đã phát triển kỹ năng toàn diện từ việc lên ý tưởng nội dung, sản xuất video, thiết kế hình ảnh đến quản lý fanpage và triển khai chiến lược truyền thông đa kênh. Tôi luôn nỗ lực tạo ra những nội dung chất lượng, sáng tạo và phù hợp với chiến lược thương hiệu.
+                </p>
+            </div>
+            <div class="about-info">
+                <div class="info-item">
+                    <div class="label" data-vi="Họ tên" data-en="Full Name">Họ tên</div>
+                    <div class="value">Đoàn Thanh Biển</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">Email</div>
+                    <div class="value">Doanbien0123@gmail.com</div>
+                </div>
+                <div class="info-item">
+                    <div class="label" data-vi="Điện thoại" data-en="Phone">Điện thoại</div>
+                    <div class="value">0969 914 832</div>
+                </div>
+                <div class="info-item">
+                    <div class="label" data-vi="Địa điểm" data-en="Location">Địa điểm</div>
+                    <div class="value" data-vi="Hà Nội, Việt Nam" data-en="Hanoi, Vietnam">Hà Nội, Việt Nam</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Experience -->
+<section id="experience" style="background: rgba(108, 99, 255, 0.04);">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="section-tag" data-vi="Kinh nghiệm" data-en="Experience">Kinh nghiệm</span>
+            <h2 class="section-title" data-vi="Kinh nghiệm <span>làm việc</span>" data-en="Work <span>Experience</span>">Kinh nghiệm <span>làm việc</span></h2>
+            <p class="section-desc" data-vi="Hành trình phát triển sự nghiệp trong lĩnh vực Content Marketing" data-en="Career development journey in the Content Marketing field">Hành trình phát triển sự nghiệp trong lĩnh vực Content Marketing</p>
+        </div>
+        <div class="timeline fade-in">
+            <div class="timeline-item">
+                <span class="timeline-date">11/2024 - 04/2025</span>
+                <h3 class="timeline-company" data-vi="Công ty Cổ Phần GWM - Thành An" data-en="GWM - Thanh An Joint Stock Company">Công ty Cổ Phần GWM - Thành An</h3>
+                <p class="timeline-role" data-vi="Nhân Viên Content Marketing" data-en="Content Marketing Staff">Nhân Viên Content Marketing</p>
+                <ul class="timeline-details">
+                    <li data-vi="Phối hợp với Marketing team để lên kế hoạch content chi tiết cho Fanpages của công ty" data-en="Collaborated with Marketing team to create detailed content plans for company Fanpages">Phối hợp với Marketing team để lên kế hoạch content chi tiết cho Fanpages của công ty</li>
+                    <li data-vi="Xây dựng nội dung, viết bài chăm sóc Fanpage, website" data-en="Built content and wrote articles for Fanpage and website maintenance">Xây dựng nội dung, viết bài chăm sóc Fanpage, website</li>
+                    <li data-vi="Chịu trách nhiệm sản xuất nội dung truyền thông (Digital/Offline) như bài viết, idea video / hình ảnh" data-en="Responsible for producing media content (Digital/Offline) including articles, video ideas and images">Chịu trách nhiệm sản xuất nội dung truyền thông (Digital/Offline) như bài viết, idea video / hình ảnh</li>
+                    <li data-vi="Biên tập nội dung truyền thông trên các kênh: website, mạng xã hội, Email, PR, seeding" data-en="Edited media content across channels: website, social media, Email, PR, seeding">Biên tập nội dung truyền thông trên các kênh: website, mạng xã hội, Email, PR, seeding</li>
+                    <li data-vi="Thực hiện các công việc theo chỉ đạo trực tiếp từ trưởng bộ phận và Ban lãnh đạo" data-en="Executed tasks under direct supervision from department head and management board">Thực hiện các công việc theo chỉ đạo trực tiếp từ trưởng bộ phận và Ban lãnh đạo</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-date">07/2024 - 10/2024</span>
+                <h3 class="timeline-company" data-vi="Công ty TNHH Tổ hợp Y tế Medilplus" data-en="Medilplus Medical Complex Co., Ltd">Công ty TNHH Tổ hợp Y tế Medilplus</h3>
+                <p class="timeline-role" data-vi="Nhân Viên Content Marketing" data-en="Content Marketing Staff">Nhân Viên Content Marketing</p>
+                <ul class="timeline-details">
+                    <li data-vi="Sản xuất nội dung truyền thông (Digital/Offline) như bài viết, ý tưởng, video và hình ảnh" data-en="Produced media content (Digital/Offline) including articles, ideas, videos and images">Sản xuất nội dung truyền thông (Digital/Offline) như bài viết, ý tưởng, video và hình ảnh</li>
+                    <li data-vi="Phụ trách nội dung và quản lý các trang mạng xã hội (Facebook, Instagram, Zalo...)" data-en="Managed content and social media pages (Facebook, Instagram, Zalo...)">Phụ trách nội dung và quản lý các trang mạng xã hội (Facebook, Instagram, Zalo...)</li>
+                    <li data-vi="Tham gia lên ý tưởng, viết kịch bản, tổ chức sản xuất video" data-en="Participated in ideation, scriptwriting, and video production organization">Tham gia lên ý tưởng, viết kịch bản, tổ chức sản xuất video</li>
+                    <li data-vi="Biên tập, xử lý các video cơ bản phục vụ cho kênh và hoạt động truyền thông sản phẩm" data-en="Edited and processed basic videos for channels and product marketing activities">Biên tập, xử lý các video cơ bản phục vụ cho kênh và hoạt động truyền thông sản phẩm</li>
+                    <li data-vi="Phối hợp với đội quay, dựng trong sản xuất video viral trên các kênh" data-en="Coordinated with filming and editing teams in producing viral videos across channels">Phối hợp với đội quay, dựng trong sản xuất video viral trên các kênh</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-date">10/2023 - 04/2024</span>
+                <h3 class="timeline-company" data-vi="Công ty TNHH Liên Kết Y tế Nhật Việt" data-en="Japan-Vietnam Medical Link Co., Ltd">Công ty TNHH Liên Kết Y tế Nhật Việt</h3>
+                <p class="timeline-role" data-vi="Nhân Viên Content" data-en="Content Staff">Nhân Viên Content</p>
+                <ul class="timeline-details">
+                    <li data-vi="Xây dựng kịch bản: ý tưởng nội dung quay, kịch bản quay, chụp các sản phẩm, dịch vụ, sự kiện" data-en="Created scripts: content ideas for filming, shooting scripts for products, services, and events">Xây dựng kịch bản: ý tưởng nội dung quay, kịch bản quay, chụp các sản phẩm, dịch vụ, sự kiện</li>
+                    <li data-vi="Thiết kế hình ảnh trên Canva và Photoshop" data-en="Designed graphics using Canva and Photoshop">Thiết kế hình ảnh trên Canva và Photoshop</li>
+                    <li data-vi="Triển khai nội dung in ấn bao bì nhãn mác, voucher, brochure, tờ gấp theo chiến lược nhận diện thương hiệu" data-en="Developed print content for packaging, labels, vouchers, brochures, and flyers aligned with brand identity strategy">Triển khai nội dung in ấn bao bì nhãn mác, voucher, brochure, tờ gấp theo chiến lược nhận diện thương hiệu</li>
+                    <li data-vi="Triển khai nội dung và thiết kế landing page" data-en="Developed content and designed landing pages">Triển khai nội dung và thiết kế landing page</li>
+                    <li data-vi="Đăng tải nội dung lên các kênh truyền thông xã hội (Facebook, TikTok, Youtube), website" data-en="Published content on social media channels (Facebook, TikTok, Youtube) and website">Đăng tải nội dung lên các kênh truyền thông xã hội (Facebook, TikTok, Youtube), website</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Education -->
+<section id="education">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="section-tag" data-vi="Học vấn" data-en="Education">Học vấn</span>
+            <h2 class="section-title" data-vi="Hành trình <span>học tập</span>" data-en="Educational <span>Background</span>">Hành trình <span>học tập</span></h2>
+            <p class="section-desc" data-vi="Nền tảng học thuật vững chắc trong lĩnh vực Marketing" data-en="Solid academic foundation in Marketing">Nền tảng học thuật vững chắc trong lĩnh vực Marketing</p>
+        </div>
+        <div class="edu-card fade-in">
+            <div class="edu-icon">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h3 class="edu-name" data-vi="Đại học Kinh Tế Quốc Dân" data-en="National Economics University">Đại học Kinh Tế Quốc Dân</h3>
+            <p class="edu-major" data-vi="Chuyên ngành: Marketing" data-en="Major: Marketing">Chuyên ngành: Marketing</p>
+            <div class="edu-gpa">
+                <i class="fas fa-star"></i>
+                GPA: 3.16 / 4.0
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Certificates -->
+<section id="certificates" style="background: rgba(108, 99, 255, 0.04);">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="section-tag" data-vi="Chứng chỉ" data-en="Certificates">Chứng chỉ</span>
+            <h2 class="section-title" data-vi="Chứng chỉ & <span>Bằng cấp</span>" data-en="Certificates & <span>Qualifications</span>">Chứng chỉ & <span>Bằng cấp</span></h2>
+            <p class="section-desc" data-vi="Các chứng chỉ quốc tế và chuyên môn đã đạt được" data-en="International and professional certificates achieved">Các chứng chỉ quốc tế và chuyên môn đã đạt được</p>
+        </div>
+        <div class="cert-grid fade-in">
+            <div class="cert-card">
+                <div class="cert-icon"><i class="fas fa-language"></i></div>
+                <h4 class="cert-title">HSK 6 & HSKK</h4>
+                <p class="cert-detail" data-vi="Chứng chỉ năng lực tiếng Trung Quốc cấp độ cao nhất" data-en="Highest level Chinese proficiency certificate">Chứng chỉ năng lực tiếng Trung Quốc cấp độ cao nhất</p>
+                <span class="cert-badge">Chinese Proficiency</span>
+            </div>
+            <div class="cert-card">
+                <div class="cert-icon"><i class="fas fa-globe"></i></div>
+                <h4 class="cert-title">IELTS 5.5</h4>
+                <p class="cert-detail" data-vi="Chứng chỉ tiếng Anh quốc tế IELTS" data-en="International English Language Testing System">Chứng chỉ tiếng Anh quốc tế IELTS</p>
+                <span class="cert-badge">English Proficiency</span>
+            </div>
+            <div class="cert-card">
+                <div class="cert-icon"><i class="fas fa-chart-line"></i></div>
+                <h4 class="cert-title">Digital Marketing</h4>
+                <p class="cert-detail" data-vi="Chứng chỉ Digital Marketing từ HubSpot Academy" data-en="Digital Marketing Certificate from HubSpot Academy">Chứng chỉ Digital Marketing từ HubSpot Academy</p>
+                <span class="cert-badge">HubSpot Academy</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects -->
+<section id="projects">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="section-tag" data-vi="Dự án" data-en="Projects">Dự án</span>
+            <h2 class="section-title" data-vi="Dự án <span>cá nhân</span>" data-en="Personal <span>Projects</span>">Dự án <span>cá nhân</span></h2>
+            <p class="section-desc" data-vi="Các sản phẩm content tiêu biểu đã thực hiện" data-en="Featured content works and productions">Các sản phẩm content tiêu biểu đã thực hiện</p>
+        </div>
+        <div class="projects-grid fade-in">
+            <div class="project-card">
+                <div class="project-video">
+                    <iframe src="https://www.tiktok.com/embed/v2/7502758788483648776" allowfullscreen allow="encrypted-media"></iframe>
+                </div>
+                <div class="project-info">
+                    <div>
+                        <span class="project-company"><i class="fab fa-tiktok"></i> GWM Thành An</span>
+                        <p class="project-title">Video Content - GWM Thành An Việt Nam</p>
+                    </div>
+                    <a href="https://www.tiktok.com/@gwmthanhanvietnam/video/7502758788483648776" target="_blank" class="project-link">
+                        <span data-vi="Xem trên TikTok" data-en="View on TikTok">Xem trên TikTok</span> <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-video">
+                    <iframe src="https://www.tiktok.com/embed/v2/7470430625560841490" allowfullscreen allow="encrypted-media"></iframe>
+                </div>
+                <div class="project-info">
+                    <div>
+                        <span class="project-company"><i class="fab fa-tiktok"></i> GWM Thành An</span>
+                        <p class="project-title">Video Content - GWM Thành An Việt Nam</p>
+                    </div>
+                    <a href="https://www.tiktok.com/@gwmthanhanvietnam/video/7470430625560841490" target="_blank" class="project-link">
+                        <span data-vi="Xem trên TikTok" data-en="View on TikTok">Xem trên TikTok</span> <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-video">
+                    <iframe src="https://www.tiktok.com/embed/v2/7468511614484974856" allowfullscreen allow="encrypted-media"></iframe>
+                </div>
+                <div class="project-info">
+                    <div>
+                        <span class="project-company"><i class="fab fa-tiktok"></i> GWM Thành An</span>
+                        <p class="project-title">Video Content - GWM Thành An Việt Nam</p>
+                    </div>
+                    <a href="https://www.tiktok.com/@gwmthanhanvietnam/video/7468511614484974856" target="_blank" class="project-link">
+                        <span data-vi="Xem trên TikTok" data-en="View on TikTok">Xem trên TikTok</span> <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-video">
+                    <iframe src="https://www.tiktok.com/embed/v2/7461936525324930322" allowfullscreen allow="encrypted-media"></iframe>
+                </div>
+                <div class="project-info">
+                    <div>
+                        <span class="project-company"><i class="fab fa-tiktok"></i> GWM Thành An</span>
+                        <p class="project-title">Video Content - GWM Thành An Việt Nam</p>
+                    </div>
+                    <a href="https://www.tiktok.com/@gwmthanhanvietnam/video/7461936525324930322" target="_blank" class="project-link">
+                        <span data-vi="Xem trên TikTok" data-en="View on TikTok">Xem trên TikTok</span> <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="section-tag" data-vi="Liên hệ" data-en="Contact">Liên hệ</span>
+            <h2 class="section-title" data-vi="Liên hệ <span>với tôi</span>" data-en="Get in <span>Touch</span>">Liên hệ <span>với tôi</span></h2>
+            <p class="section-desc" data-vi="Hãy kết nối để thảo luận về các cơ hội hợp tác" data-en="Let's connect to discuss collaboration opportunities">Hãy kết nối để thảo luận về các cơ hội hợp tác</p>
+        </div>
+        <div class="contact-grid fade-in">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <div>
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value"><a href="mailto:Doanbien0123@gmail.com">Doanbien0123@gmail.com</a></div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                    <div>
+                        <div class="contact-label" data-vi="Điện thoại" data-en="Phone">Điện thoại</div>
+                        <div class="contact-value"><a href="tel:0969914832">0969 914 832</a></div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div>
+                        <div class="contact-label" data-vi="Địa chỉ" data-en="Address">Địa chỉ</div>
+                        <div class="contact-value" data-vi="Hà Nội, Việt Nam" data-en="Hanoi, Vietnam">Hà Nội, Việt Nam</div>
+                    </div>
+                </div>
+            </div>
+            <form class="contact-form" id="contactForm" onsubmit="event.preventDefault(); alert(document.documentElement.lang === 'en' ? 'Thank you for your message!' : 'Cảm ơn bạn đã liên hệ!');">
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" id="inputName" placeholder="Họ và tên" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="inputSubject" placeholder="Tiêu đề">
+                </div>
+                <div class="form-group">
+                    <textarea id="inputMessage" placeholder="Nội dung tin nhắn..." required></textarea>
+                </div>
+                <button type="submit" class="btn-primary" style="width: fit-content;">
+                    <i class="fas fa-paper-plane"></i> <span data-vi="Gửi tin nhắn" data-en="Send Message">Gửi tin nhắn</span>
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-name">Đoàn Thanh Biển</div>
+        <p class="footer-copy">&copy; 2025 Đoàn Thanh Biển. Content Marketing Specialist.</p>
+        <div class="footer-socials">
+            <a href="mailto:Doanbien0123@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="tel:0969914832" title="Phone"><i class="fas fa-phone"></i></a>
+            <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Language switching
+    let currentLang = 'en';
+
+    function switchLang(lang) {
+        currentLang = lang;
+        document.documentElement.lang = lang;
+        document.getElementById('btnVI').classList.toggle('active', lang === 'vi');
+        document.getElementById('btnEN').classList.toggle('active', lang === 'en');
+
+        document.querySelectorAll('[data-vi][data-en]').forEach(el => {
+            const text = el.getAttribute('data-' + lang);
+            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                el.placeholder = text;
+            } else {
+                el.innerHTML = text;
+            }
+        });
+
+        // Update placeholders
+        const ph = lang === 'en'
+            ? { name: 'Full name', subject: 'Subject', message: 'Your message...' }
+            : { name: 'Họ và tên', subject: 'Tiêu đề', message: 'Nội dung tin nhắn...' };
+        document.getElementById('inputName').placeholder = ph.name;
+        document.getElementById('inputSubject').placeholder = ph.subject;
+        document.getElementById('inputMessage').placeholder = ph.message;
+    }
+
+    switchLang('en');
+
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Mobile toggle
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => navLinks.classList.remove('active'));
+    });
+
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                entry.target.querySelectorAll('.stat-number[data-target]').forEach(counter => {
+                    const target = parseInt(counter.dataset.target);
+                    let current = 0;
+                    const increment = target / 40;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            counter.textContent = target + '+';
+                            clearInterval(timer);
+                        } else {
+                            counter.textContent = Math.floor(current) + '+';
+                        }
+                    }, 40);
+                });
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+</script>
+
+</body>
+</html>
